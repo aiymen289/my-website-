@@ -167,6 +167,78 @@ tbody tr:hover{background:#EAF4F4}
 .notif-sub{font-size:13px;color:#6B7B7B;margin-top:2px}
 .notif-time{font-size:12px;color:#6B7B7B;white-space:nowrap}
 
+/* ========= NOTIFICATION BELL DROPDOWN ========= */
+.notif-bell-wrap{position:relative;display:inline-flex;align-items:center}
+.notif-bell-btn{background:transparent;border:none;cursor:pointer;position:relative;padding:6px;display:flex;align-items:center;justify-content:center}
+.notif-bell-btn svg{width:22px;height:22px;stroke:#EAF4F4;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif-bell-badge{position:absolute;top:2px;right:2px;background:#EF4444;color:#fff;font-size:10px;font-weight:700;border-radius:20px;padding:1px 5px;min-width:17px;text-align:center;line-height:14px;border:2px solid #1B3A3A}
+.notif-dropdown{display:none;position:absolute;top:calc(100% + 10px);right:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);width:360px;z-index:500;overflow:hidden;border:1px solid #E5E7EB}
+.notif-dropdown.open{display:block}
+.notif-drop-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #EAF4F4}
+.notif-drop-title{font-size:15px;font-weight:700;color:#1B3A3A}
+.notif-new-badge{background:#EAF4F4;color:#1B3A3A;border:1px solid #D1D5DB;border-radius:20px;font-size:12px;font-weight:600;padding:2px 10px;margin-left:8px}
+.notif-mark-read{font-size:13px;color:#C89B3C;cursor:pointer;font-weight:500;background:none;border:none;font-family:inherit}
+.notif-drop-list{max-height:340px;overflow-y:auto}
+.notif-drop-item{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border-bottom:1px solid #F3F4F6;cursor:pointer;transition:background .15s}
+.notif-drop-item:last-child{border-bottom:none}
+.notif-drop-item:hover{background:#F9FAFB}
+.notif-drop-item.unread{background:#FFF9F0}
+.notif-drop-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:#EAF4F4}
+.notif-drop-icon.inv{background:rgba(200,155,60,0.12);color:#C89B3C}
+.notif-drop-content{flex:1;min-width:0}
+.notif-drop-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#C89B3C;margin-bottom:2px}
+.notif-drop-main{font-size:14px;font-weight:600;color:#1B3A3A;line-height:1.3}
+.notif-drop-sub{font-size:13px;color:#6B7B7B;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif-drop-time{font-size:12px;color:#6B7B7B;margin-top:3px}
+.notif-unread-dot{width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;margin-top:4px}
+.notif-drop-footer{padding:12px 18px;text-align:center;border-top:1px solid #EAF4F4}
+.notif-drop-footer a{font-size:13px;color:#2A5F5F;font-weight:500;cursor:pointer;text-decoration:none}
+.notif-drop-footer a:hover{color:#C89B3C}
+
+/* ========= CHAT WINDOW ========= */
+.chat-fab{position:fixed;bottom:28px;right:28px;z-index:800;background:#C89B3C;color:#fff;border:none;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.22);display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.chat-fab:hover{transform:scale(1.08)}
+.chat-fab-badge{position:absolute;top:4px;right:4px;background:#EF4444;color:#fff;font-size:10px;font-weight:700;border-radius:20px;padding:1px 5px;min-width:17px;text-align:center;line-height:14px;border:2px solid #C89B3C}
+.chat-window{display:none;position:fixed;bottom:90px;right:28px;z-index:800;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.2);width:340px;height:460px;flex-direction:column;overflow:hidden;border:1px solid #E5E7EB}
+.chat-window.open{display:flex}
+.chat-win-head{background:#1B3A3A;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-win-title{font-size:15px;font-weight:600;color:#fff}
+.chat-win-sub{font-size:12px;color:#EAF4F4;margin-top:1px}
+.chat-win-close{background:none;border:none;color:#EAF4F4;font-size:18px;cursor:pointer;line-height:1}
+.chat-contacts{flex:1;overflow-y:auto;border-right:1px solid #EAF4F4}
+.chat-contact{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;border-bottom:1px solid #F3F4F6;transition:background .15s}
+.chat-contact:hover,.chat-contact.active{background:#EAF4F4}
+.chat-contact-avatar{width:36px;height:36px;border-radius:50%;background:#1B3A3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;position:relative}
+.chat-online{position:absolute;bottom:1px;right:1px;width:9px;height:9px;border-radius:50%;background:#22C55E;border:2px solid #fff}
+.chat-contact-info{flex:1;min-width:0}
+.chat-contact-name{font-size:14px;font-weight:500;color:#1B3A3A}
+.chat-contact-preview{font-size:12px;color:#6B7B7B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-contact-unread{background:#C89B3C;color:#fff;border-radius:20px;font-size:11px;font-weight:700;padding:1px 7px;flex-shrink:0}
+.chat-body{display:flex;flex-direction:column;flex:1;overflow:hidden}
+.chat-thread-head{padding:10px 14px;border-bottom:1px solid #EAF4F4;display:flex;align-items:center;gap:10px;background:#F9FAFB;flex-shrink:0}
+.chat-thread-av{width:30px;height:30px;border-radius:50%;background:#1B3A3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.chat-thread-name{font-size:14px;font-weight:600;color:#1B3A3A}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{max-width:78%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;word-break:break-word}
+.chat-msg.me{background:#1B3A3A;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.them{background:#EAF4F4;color:#1B3A3A;align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg-time{font-size:11px;opacity:.65;margin-top:4px}
+.chat-msg-wrap{display:flex;flex-direction:column}
+.chat-msg-wrap.me{align-items:flex-end}
+.chat-msg-wrap.them{align-items:flex-start}
+.chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #EAF4F4;flex-shrink:0;background:#fff}
+.chat-input-row input{border:1px solid #D1D5DB;border-radius:20px;padding:8px 14px;font-size:13px;flex:1;background:#F9FAFB;color:#1B3A3A}
+.chat-input-row input:focus{border-color:#C89B3C;box-shadow:none;background:#fff}
+.chat-send{background:#C89B3C;color:#fff;border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;flex-shrink:0;font-size:16px;display:flex;align-items:center;justify-content:center}
+.chat-send:hover{background:#b8893a}
+.chat-back-btn{background:none;border:none;color:#2A5F5F;font-size:18px;cursor:pointer;padding:0 4px 0 0;line-height:1}
+
+/* two-pane chat layout */
+.chat-panes{display:flex;flex:1;overflow:hidden;flex-direction:column}
+.chat-list-pane{display:flex;flex-direction:column;overflow-y:auto}
+.chat-detail-pane{display:none;flex-direction:column;flex:1;overflow:hidden}
+.chat-detail-pane.open{display:flex}
+
 @media(max-width:900px){
   .stat-grid{grid-template-columns:repeat(2,1fr)}
   .two-col{grid-template-columns:1fr}
@@ -256,6 +328,94 @@ tbody tr:hover{background:#EAF4F4}
         <button class="btn-primary" onclick="showScreen('screen-org-4')">Manage Invitations</button>
         <button class="btn-secondary-light" onclick="showScreen('screen-org-5')">Settings</button>
         <button class="btn-signout" onclick="showScreen('screen-login')">Sign Out</button>
+        <!-- Notification Bell -->
+        <div class="notif-bell-wrap" id="org-bell-wrap">
+          <button class="notif-bell-btn" onclick="toggleNotifDropdown('org-notif-dropdown','org-bell-wrap')">
+            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-bell-badge" id="org-notif-count">9</span>
+          </button>
+          <!-- Org notification dropdown -->
+          <div class="notif-dropdown" id="org-notif-dropdown">
+            <div class="notif-drop-head">
+              <div style="display:flex;align-items:center">
+                <span class="notif-drop-title">Notifications</span>
+                <span class="notif-new-badge" id="org-new-badge">9 new</span>
+              </div>
+              <button class="notif-mark-read" onclick="markDropdownRead('org')">Mark all as read</button>
+            </div>
+            <div class="notif-drop-list" id="org-notif-list">
+              <div class="notif-drop-item unread" onclick="openModal('modal-org-event-detail')">
+                <div class="notif-drop-icon inv">✉️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">Invitation: Dr. Sarah Chen</div>
+                  <div class="notif-drop-sub">Dr. Sarah Chen accepted Tech Leadership Summit</div>
+                  <div class="notif-drop-time">Jun 6 at 5:36 PM</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread" onclick="openModal('modal-cancel-invitation')">
+                <div class="notif-drop-icon inv">✉️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">Invitation: Marcus Johnson</div>
+                  <div class="notif-drop-sub">Marcus Johnson invited for AI Workshop</div>
+                  <div class="notif-drop-time">Jun 6 at 5:36 PM</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread">
+                <div class="notif-drop-icon inv">✉️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">Invitation: Dr. Aisha Patel</div>
+                  <div class="notif-drop-sub">Dr. Aisha Patel declined Product Launch Talk</div>
+                  <div class="notif-drop-time">Jun 5 at 5:36 PM</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread">
+                <div class="notif-drop-icon inv">✉️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">Invitation: Priya Nair</div>
+                  <div class="notif-drop-sub">Priya Nair invited for Innovation Forum</div>
+                  <div class="notif-drop-time">Jun 5 at 4:12 PM</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread">
+                <div class="notif-drop-icon" style="background:rgba(42,95,95,0.12)">📅</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">EVENT</div>
+                  <div class="notif-drop-main">Event Reminder: AI Workshop</div>
+                  <div class="notif-drop-sub">AI Workshop is in 3 days — New York</div>
+                  <div class="notif-drop-time">Jun 5 at 10:00 AM</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item">
+                <div class="notif-drop-icon" style="background:rgba(34,197,94,0.12)">✓</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">CONFIRMED</div>
+                  <div class="notif-drop-main">Innovation Forum Confirmed</div>
+                  <div class="notif-drop-sub">Dr. Aisha Patel confirmed for Nov 5</div>
+                  <div class="notif-drop-time">Jun 4 at 3:00 PM</div>
+                </div>
+              </div>
+              <div class="notif-drop-item">
+                <div class="notif-drop-icon" style="background:rgba(107,123,123,0.12)">ℹ️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">SYSTEM</div>
+                  <div class="notif-drop-main">New speaker joined: Tom Eriksen</div>
+                  <div class="notif-drop-sub">Cybersecurity Expert — available</div>
+                  <div class="notif-drop-time">Jun 3 at 9:00 AM</div>
+                </div>
+              </div>
+            </div>
+            <div class="notif-drop-footer"><a onclick="showScreen('screen-org-4')">View all notifications</a></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="content-area">
@@ -281,6 +441,76 @@ tbody tr:hover{background:#EAF4F4}
           </div>
         </div>
         <div id="org-cal"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Org Chat FAB -->
+  <button class="chat-fab" id="org-chat-fab" onclick="toggleChat('org-chat')" title="Messages">
+    💬
+    <span class="chat-fab-badge">3</span>
+  </button>
+  <!-- Org Chat Window -->
+  <div class="chat-window" id="org-chat">
+    <div class="chat-win-head">
+      <div>
+        <div class="chat-win-title">Messages</div>
+        <div class="chat-win-sub">3 unread conversations</div>
+      </div>
+      <button class="chat-win-close" onclick="toggleChat('org-chat')">×</button>
+    </div>
+    <div class="chat-panes">
+      <!-- Contact list -->
+      <div class="chat-list-pane" id="org-chat-list">
+        <div class="chat-contact" onclick="openChatThread('org','SC','Dr. Sarah Chen','SC','Sounds great, see you there!','2m ago')">
+          <div class="chat-contact-avatar">SC<div class="chat-online"></div></div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Dr. Sarah Chen</div>
+            <div class="chat-contact-preview">Sounds great, see you there!</div>
+          </div>
+          <span class="chat-contact-unread">2</span>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('org','MJ','Marcus Johnson','MJ','Can you confirm the honorarium?','14m ago')">
+          <div class="chat-contact-avatar" style="background:#2A5F5F">MJ<div class="chat-online"></div></div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Marcus Johnson</div>
+            <div class="chat-contact-preview">Can you confirm the honorarium?</div>
+          </div>
+          <span class="chat-contact-unread">1</span>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('org','AP','Dr. Aisha Patel','AP','Thank you for reaching out.','1h ago')">
+          <div class="chat-contact-avatar" style="background:#C89B3C">AP</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Dr. Aisha Patel</div>
+            <div class="chat-contact-preview">Thank you for reaching out.</div>
+          </div>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('org','PN','Priya Nair','PN','I will check my calendar.','3h ago')">
+          <div class="chat-contact-avatar" style="background:#4338CA">PN</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Priya Nair</div>
+            <div class="chat-contact-preview">I will check my calendar.</div>
+          </div>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('org','TE','Tom Eriksen','TE','Looking forward to it!','Yesterday')">
+          <div class="chat-contact-avatar" style="background:#EF4444">TE</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Tom Eriksen</div>
+            <div class="chat-contact-preview">Looking forward to it!</div>
+          </div>
+        </div>
+      </div>
+      <!-- Thread detail -->
+      <div class="chat-detail-pane" id="org-chat-detail">
+        <div class="chat-thread-head">
+          <button class="chat-back-btn" onclick="closeChatThread('org')">←</button>
+          <div class="chat-thread-av" id="org-thread-av">SC</div>
+          <div class="chat-thread-name" id="org-thread-name">Dr. Sarah Chen</div>
+        </div>
+        <div class="chat-messages" id="org-thread-msgs"></div>
+        <div class="chat-input-row">
+          <input id="org-chat-input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChatMsg('org')">
+          <button class="chat-send" onclick="sendChatMsg('org')">➤</button>
+        </div>
       </div>
     </div>
   </div>
@@ -432,6 +662,75 @@ tbody tr:hover{background:#EAF4F4}
         <button class="btn-primary" onclick="openModal('modal-block-time')">+ Block Time</button>
         <button class="btn-secondary-light" onclick="openModal('modal-manage-blocked')">Manage Blocked Times</button>
         <button class="btn-signout" onclick="showScreen('screen-login')">Sign Out</button>
+        <!-- Speaker Notification Bell -->
+        <div class="notif-bell-wrap" id="spk-bell-wrap">
+          <button class="notif-bell-btn" onclick="toggleNotifDropdown('spk-notif-dropdown','spk-bell-wrap')">
+            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-bell-badge" id="spk-notif-count">4</span>
+          </button>
+          <!-- Speaker notification dropdown -->
+          <div class="notif-dropdown" id="spk-notif-dropdown">
+            <div class="notif-drop-head">
+              <div style="display:flex;align-items:center">
+                <span class="notif-drop-title">Notifications</span>
+                <span class="notif-new-badge" id="spk-new-badge">4 new</span>
+              </div>
+              <button class="notif-mark-read" onclick="markDropdownRead('spk')">Mark all as read</button>
+            </div>
+            <div class="notif-drop-list" id="spk-notif-list">
+              <div class="notif-drop-item unread" onclick="openModal('modal-notification-detail')">
+                <div class="notif-drop-icon inv">✉️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">New invitation from Acme Corporation</div>
+                  <div class="notif-drop-sub">Tech Leadership Summit · Oct 15, 2025</div>
+                  <div class="notif-drop-time">2 hours ago</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread" onclick="openModal('modal-notification-detail')">
+                <div class="notif-drop-icon inv">⏰</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">INVITATION</div>
+                  <div class="notif-drop-main">Invitation expiring — TechStart Inc</div>
+                  <div class="notif-drop-sub">AI Workshop · expires in 18 hours</div>
+                  <div class="notif-drop-time">5 hours ago</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread">
+                <div class="notif-drop-icon" style="background:rgba(42,95,95,0.12)">📅</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">REMINDER</div>
+                  <div class="notif-drop-main">Reminder: Innovation Forum in 3 days</div>
+                  <div class="notif-drop-sub">FutureCo · Nov 5, 2025</div>
+                  <div class="notif-drop-time">Yesterday</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item unread">
+                <div class="notif-drop-icon" style="background:rgba(34,197,94,0.12)">✓</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">CONFIRMED</div>
+                  <div class="notif-drop-main">FutureCo confirmed your acceptance</div>
+                  <div class="notif-drop-sub">Innovation Forum · Nov 5, 2025</div>
+                  <div class="notif-drop-time">2 days ago</div>
+                </div>
+                <div class="notif-unread-dot"></div>
+              </div>
+              <div class="notif-drop-item">
+                <div class="notif-drop-icon" style="background:rgba(107,123,123,0.12)">ℹ️</div>
+                <div class="notif-drop-content">
+                  <div class="notif-drop-label">SYSTEM</div>
+                  <div class="notif-drop-main">Profile updated successfully</div>
+                  <div class="notif-drop-sub">System notification</div>
+                  <div class="notif-drop-time">3 days ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="notif-drop-footer"><a onclick="showScreen('screen-spk-9')">View all notifications</a></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="content-area">
@@ -466,6 +765,67 @@ tbody tr:hover{background:#EAF4F4}
             <div style="font-size:12px;color:#6B7B7B">Nov 18</div>
             <div style="font-size:12px;color:#C89B3C">FutureCo</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Speaker Chat FAB -->
+  <button class="chat-fab" id="spk-chat-fab" onclick="toggleChat('spk-chat')" title="Messages">
+    💬
+    <span class="chat-fab-badge">2</span>
+  </button>
+  <!-- Speaker Chat Window -->
+  <div class="chat-window" id="spk-chat">
+    <div class="chat-win-head">
+      <div>
+        <div class="chat-win-title">Messages</div>
+        <div class="chat-win-sub">2 unread conversations</div>
+      </div>
+      <button class="chat-win-close" onclick="toggleChat('spk-chat')">×</button>
+    </div>
+    <div class="chat-panes">
+      <div class="chat-list-pane" id="spk-chat-list">
+        <div class="chat-contact" onclick="openChatThread('spk','AC','Acme Corporation','AC','Please confirm your travel arrangements.','1h ago')">
+          <div class="chat-contact-avatar" style="background:#2A5F5F">AC<div class="chat-online"></div></div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Acme Corporation</div>
+            <div class="chat-contact-preview">Please confirm your travel arrangements.</div>
+          </div>
+          <span class="chat-contact-unread">1</span>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('spk','TS','TechStart Inc','TS','We look forward to your session!','3h ago')">
+          <div class="chat-contact-avatar" style="background:#C89B3C">TS<div class="chat-online"></div></div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">TechStart Inc</div>
+            <div class="chat-contact-preview">We look forward to your session!</div>
+          </div>
+          <span class="chat-contact-unread">1</span>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('spk','FC','FutureCo','FC','Contract has been sent to your email.','Yesterday')">
+          <div class="chat-contact-avatar" style="background:#4338CA">FC</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">FutureCo</div>
+            <div class="chat-contact-preview">Contract has been sent to your email.</div>
+          </div>
+        </div>
+        <div class="chat-contact" onclick="openChatThread('spk','GE','Global Events Ltd','GE','Thank you for your response.','2 days ago')">
+          <div class="chat-contact-avatar" style="background:#EF4444">GE</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name">Global Events Ltd</div>
+            <div class="chat-contact-preview">Thank you for your response.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-detail-pane" id="spk-chat-detail">
+        <div class="chat-thread-head">
+          <button class="chat-back-btn" onclick="closeChatThread('spk')">←</button>
+          <div class="chat-thread-av" id="spk-thread-av">AC</div>
+          <div class="chat-thread-name" id="spk-thread-name">Acme Corporation</div>
+        </div>
+        <div class="chat-messages" id="spk-thread-msgs"></div>
+        <div class="chat-input-row">
+          <input id="spk-chat-input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChatMsg('spk')">
+          <button class="chat-send" onclick="sendChatMsg('spk')">➤</button>
         </div>
       </div>
     </div>
@@ -890,6 +1250,8 @@ function showScreen(id){
   document.getElementById(id).classList.add('active');
   currentScreen=id;
   window.scrollTo(0,0);
+  // close all dropdowns
+  document.querySelectorAll('.notif-dropdown').forEach(d=>d.classList.remove('open'));
 }
 function openModal(id){document.getElementById(id).classList.add('active')}
 function closeModal(id){
@@ -947,10 +1309,148 @@ function markAllRead(){
   showToast('All notifications marked read');
 }
 
+// ===== NOTIFICATION DROPDOWN =====
+function toggleNotifDropdown(dropId, wrapId){
+  const drop = document.getElementById(dropId);
+  const isOpen = drop.classList.contains('open');
+  // close all
+  document.querySelectorAll('.notif-dropdown').forEach(d=>d.classList.remove('open'));
+  if(!isOpen) drop.classList.add('open');
+}
+// close dropdown on outside click
+document.addEventListener('click', function(e){
+  document.querySelectorAll('.notif-bell-wrap').forEach(wrap=>{
+    if(!wrap.contains(e.target)){
+      wrap.querySelector('.notif-dropdown').classList.remove('open');
+    }
+  });
+});
+
+function markDropdownRead(prefix){
+  const list = document.getElementById(prefix+'-notif-list');
+  list.querySelectorAll('.notif-drop-item.unread').forEach(item=>{
+    item.classList.remove('unread');
+    const dot = item.querySelector('.notif-unread-dot');
+    if(dot) dot.remove();
+  });
+  document.getElementById(prefix+'-notif-count').textContent='0';
+  document.getElementById(prefix+'-new-badge').textContent='0 new';
+  showToast('All notifications marked as read');
+}
+
+// ===== CHAT =====
+const CHAT_THREADS = {
+  org: {
+    SC: [
+      {me:false, text:"Hi! Just confirming my attendance for Tech Leadership Summit.", time:"10:22 AM"},
+      {me:true,  text:"Great to hear, Dr. Chen! Everything is confirmed on our end.", time:"10:25 AM"},
+      {me:false, text:"Will there be AV equipment available for my presentation slides?", time:"10:26 AM"},
+      {me:true,  text:"Yes, full AV setup including laser pointer and clicker.", time:"10:28 AM"},
+      {me:false, text:"Sounds great, see you there!", time:"10:30 AM"},
+    ],
+    MJ: [
+      {me:false, text:"Hello, I received the invitation for the AI Workshop.", time:"9:00 AM"},
+      {me:true,  text:"Hi Marcus! Yes, we'd love to have you. Any questions?", time:"9:05 AM"},
+      {me:false, text:"Can you confirm the honorarium? The invitation says $2,800.", time:"9:10 AM"},
+      {me:true,  text:"That is correct — $2,800 plus travel reimbursement.", time:"9:12 AM"},
+    ],
+    AP: [
+      {me:true,  text:"Hi Dr. Patel, we'd love to invite you to Product Launch Talk.", time:"Yesterday 2:00 PM"},
+      {me:false, text:"Thank you for reaching out. I'll review the details.", time:"Yesterday 3:15 PM"},
+      {me:true,  text:"Please let us know by Oct 8. We can negotiate the fee.", time:"Yesterday 3:20 PM"},
+    ],
+    PN: [
+      {me:true,  text:"Hi Priya, we're excited to have you at the Innovation Forum!", time:"8:00 AM"},
+      {me:false, text:"Thank you! What are the exact session timings?", time:"8:45 AM"},
+      {me:true,  text:"Your slot is 2:00–3:30 PM on Nov 5.", time:"9:00 AM"},
+      {me:false, text:"I will check my calendar.", time:"9:10 AM"},
+    ],
+    TE: [
+      {me:true,  text:"Hi Tom, we'd like to invite you to the Leadership Roundtable.", time:"2 days ago"},
+      {me:false, text:"Looking forward to it!", time:"2 days ago"},
+    ],
+  },
+  spk: {
+    AC: [
+      {me:false, text:"Hello Dr. Chen! We're thrilled you're joining us.", time:"9:00 AM"},
+      {me:true,  text:"Thank you! Happy to be part of Tech Leadership Summit.", time:"9:05 AM"},
+      {me:false, text:"Could you send us your presentation bio by Oct 10?", time:"9:08 AM"},
+      {me:true,  text:"Absolutely, I'll send it over today.", time:"9:10 AM"},
+      {me:false, text:"Please confirm your travel arrangements.", time:"9:15 AM"},
+    ],
+    TS: [
+      {me:false, text:"Hi! You've been invited to our AI Workshop in New York.", time:"Yesterday 4:00 PM"},
+      {me:true,  text:"I saw the invitation — it looks very interesting.", time:"Yesterday 4:30 PM"},
+      {me:false, text:"We look forward to your session!", time:"Yesterday 4:35 PM"},
+    ],
+    FC: [
+      {me:false, text:"Congratulations on confirming Innovation Forum!", time:"2 days ago"},
+      {me:true,  text:"Very excited to join FutureCo's event in Austin.", time:"2 days ago"},
+      {me:false, text:"Contract has been sent to your email.", time:"2 days ago"},
+    ],
+    GE: [
+      {me:false, text:"We understand your schedule didn't allow Leadership Roundtable.", time:"3 days ago"},
+      {me:true,  text:"I'm sorry I couldn't make it work this time.", time:"3 days ago"},
+      {me:false, text:"Thank you for your response.", time:"3 days ago"},
+    ],
+  }
+};
+
+let activeChatWho = {org: null, spk: null};
+
+function toggleChat(chatId){
+  const win = document.getElementById(chatId);
+  win.classList.toggle('open');
+}
+
+function openChatThread(role, key, name, initials, preview, time){
+  activeChatWho[role] = key;
+  // update header
+  document.getElementById(role+'-thread-av').textContent = initials;
+  document.getElementById(role+'-thread-name').textContent = name;
+  // render messages
+  const msgs = CHAT_THREADS[role][key] || [];
+  const container = document.getElementById(role+'-thread-msgs');
+  container.innerHTML = msgs.map(m=>`
+    <div class="chat-msg-wrap ${m.me?'me':'them'}">
+      <div class="chat-msg ${m.me?'me':'them'}">${m.text}</div>
+      <div class="chat-msg-time" style="font-size:11px;color:#9CA3AF;margin-top:2px">${m.time}</div>
+    </div>
+  `).join('');
+  container.scrollTop = container.scrollHeight;
+  // show detail pane, hide list
+  document.getElementById(role+'-chat-list').style.display = 'none';
+  const detail = document.getElementById(role+'-chat-detail');
+  detail.classList.add('open');
+}
+
+function closeChatThread(role){
+  activeChatWho[role] = null;
+  document.getElementById(role+'-chat-list').style.display = '';
+  document.getElementById(role+'-chat-detail').classList.remove('open');
+}
+
+function sendChatMsg(role){
+  const input = document.getElementById(role+'-chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+  const key = activeChatWho[role];
+  if(!key) return;
+  const now = new Date();
+  const time = now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes()+' '+(now.getHours()<12?'AM':'PM');
+  CHAT_THREADS[role][key].push({me:true, text, time});
+  const container = document.getElementById(role+'-thread-msgs');
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-msg-wrap me';
+  wrap.innerHTML = `<div class="chat-msg me">${text}</div><div style="font-size:11px;color:#9CA3AF;margin-top:2px">${time}</div>`;
+  container.appendChild(wrap);
+  container.scrollTop = container.scrollHeight;
+  input.value = '';
+}
+
 // Build calendars
 function buildCal(containerId, events){
-  // October 2025: Oct 1 is Wednesday. 31 days. 5 weeks.
-  const startOffset=3; // Sun(0) Mon Tue Wed
+  const startOffset=3;
   const today=15;
   let html='<div class="cal-wrap"><div class="cal-head"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div><div class="cal-grid">';
   for(let i=0;i<startOffset;i++) html+='<div class="cal-cell"></div>';
