@@ -145,7 +145,7 @@
 
     /* Layout */
     .app-wrap {
-      max-width: 1280px;
+      max-width: 100%;
       margin: 0 auto
     }
 
@@ -160,7 +160,7 @@
 
     .page-header h1 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 500;
       color: #fff;
       margin: 0
     }
@@ -190,7 +190,7 @@
     input,
     textarea,
     select {
-      border: 1px solid #2A5F5F;
+      border: 1px solid rgba(42, 95, 95, 0.5);
       border-radius: 8px;
       padding: 10px 14px;
       font-size: 14px;
@@ -219,21 +219,23 @@
     /* Cards */
     .card {
       background: #fff;
-      border: 1px solid #2A5F5F;
+      border: 1px solid rgba(42, 95, 95, 0.4);
       border-radius: 12px;
-      padding: 16px 20px
+      padding: 16px 20px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .card:hover {
-      border: 2px solid #C89B3C;
-      padding: 15px 19px
+      border-color: #C89B3C;
+      box-shadow: 0 4px 12px rgba(200, 155, 60, 0.08);
     }
 
     .stat-card {
       background: #fff;
-      border: 1px solid #2A5F5F;
+      border: 1px solid rgba(42, 95, 95, 0.4);
       border-radius: 12px;
-      padding: 20px
+      padding: 20px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .stat-label {
@@ -246,7 +248,7 @@
 
     .stat-value {
       font-size: 28px;
-      font-weight: 600;
+      font-weight: 500;
       color: #1B3A3A;
       margin-top: 8px
     }
@@ -680,20 +682,36 @@
       margin-top: 20px
     }
 
+    /* =============================================
+       FIXED: chk-row — left-aligned, tighter gap
+       ============================================= */
     .chk-row {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 10px;
       font-size: 14px;
-      color: #1B3A3A
+      color: #1B3A3A;
+      justify-content: flex-start
     }
 
+    /* FIXED: checkbox size increased to 22px */
+    input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin: 0;
+      cursor: pointer;
+      accent-color: #C89B3C;
+      flex-shrink: 0;
+    }
+
+    /* FIXED: dot size increased to 15px */
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
-      display: inline-block
+      display: inline-block;
+      flex-shrink: 0;
     }
 
     /* Speaker grid */
@@ -754,7 +772,25 @@
       cursor: pointer;
       font-size: 14px;
       font-weight: 500;
-      border: 1px solid
+      border: 1px solid;
+      transition: all 0.2s;
+    }
+
+    .summary-pill.active {
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .summary-pill.all {
+      background: rgba(42, 95, 95, 0.15);
+      color: #2A5F5F;
+      border-color: #2A5F5F;
+    }
+
+    .summary-pill.all.active {
+      background: #2A5F5F;
+      color: #fff;
+      border-color: #2A5F5F;
     }
 
     .summary-pill.gold {
@@ -763,10 +799,22 @@
       border-color: #C89B3C
     }
 
+    .summary-pill.gold.active {
+      background: #C89B3C;
+      color: #fff;
+      border-color: #C89B3C;
+    }
+
     .summary-pill.green {
       background: rgba(34, 197, 94, 0.15);
       color: #22C55E;
       border-color: #22C55E
+    }
+
+    .summary-pill.green.active {
+      background: #22C55E;
+      color: #fff;
+      border-color: #22C55E;
     }
 
     .summary-pill.red {
@@ -775,10 +823,22 @@
       border-color: #EF4444
     }
 
+    .summary-pill.red.active {
+      background: #EF4444;
+      color: #fff;
+      border-color: #EF4444;
+    }
+
     .summary-pill.gray {
       background: rgba(107, 123, 123, 0.15);
       color: #6B7B7B;
       border-color: #6B7B7B
+    }
+
+    .summary-pill.gray.active {
+      background: #6B7B7B;
+      color: #fff;
+      border-color: #6B7B7B;
     }
 
     .badge-count {
@@ -1694,29 +1754,29 @@
         <div class="stat-grid">
           <!-- Pending Card -->
           <div class="stat-card" onclick="openOrgInvitations('pending')" style="cursor: pointer; background: linear-gradient(135deg, #C89B3C, #dfb355); color: #fff; border: none; border-radius: 16px; padding: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(200,155,60,0.25); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1;">4</div>
-            <div style="font-size: 14px; font-weight: 600; margin-top: 8px;">Pending</div>
+            <div style="font-size: 28px; font-weight: 500; line-height: 1;">4</div>
+            <div style="font-size: 13px; font-weight: 500; margin-top: 6px;">Pending</div>
             <div style="font-size: 11px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 4px;">↗ +0 this week</div>
             <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">⏳</div>
           </div>
           <!-- Accepted Card -->
           <div class="stat-card" onclick="openOrgInvitations('accepted')" style="cursor: pointer; background: linear-gradient(135deg, #1B3A3A, #2A5F5F); color: #fff; border: none; border-radius: 16px; padding: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(27,58,58,0.25); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1;">5</div>
-            <div style="font-size: 14px; font-weight: 600; margin-top: 8px;">Accepted</div>
+            <div style="font-size: 28px; font-weight: 500; line-height: 1;">5</div>
+            <div style="font-size: 13px; font-weight: 500; margin-top: 6px;">Accepted</div>
             <div style="font-size: 11px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 4px;">🕒 5 upcoming</div>
             <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold;">✓</div>
           </div>
           <!-- Declined Card -->
           <div class="stat-card" onclick="openOrgInvitations('declined')" style="cursor: pointer; background: linear-gradient(135deg, #C89B3C, #1B3A3A); color: #fff; border: none; border-radius: 16px; padding: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(200,155,60,0.25); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1;">1</div>
-            <div style="font-size: 14px; font-weight: 600; margin-top: 8px;">Declined</div>
+            <div style="font-size: 28px; font-weight: 500; line-height: 1;">1</div>
+            <div style="font-size: 13px; font-weight: 500; margin-top: 6px;">Declined</div>
             <div style="font-size: 11px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 4px;">🕒 1 this month</div>
             <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold;">✕</div>
           </div>
           <!-- Cancelled Card -->
           <div class="stat-card" onclick="openOrgInvitations('cancelled')" style="cursor: pointer; background: linear-gradient(135deg, #2A5F5F, #dfb355); color: #fff; border: none; border-radius: 16px; padding: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(42,95,95,0.2); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="font-size: 36px; font-weight: 700; line-height: 1;">1</div>
-            <div style="font-size: 14px; font-weight: 600; margin-top: 8px;">Cancelled</div>
+            <div style="font-size: 28px; font-weight: 500; line-height: 1;">1</div>
+            <div style="font-size: 13px; font-weight: 500; margin-top: 6px;">Cancelled</div>
             <div style="font-size: 11px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 4px;">⚠ Needs attention</div>
             <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: bold;">⚠</div>
           </div>
@@ -1724,15 +1784,15 @@
         <div class="two-col">
           <div class="card" style="padding:20px">
             <div class="section-label">Filter by Speaker</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-all" checked onclick="toggleAllSpeakers(this)"><span class="dot" style="background:#1B3A3A"></span> All Speakers</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-yasir" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#4338CA"></span> Dr. Yasir Qadhi</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-omar" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#2A5F5F"></span> Omar Suleiman</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-zaid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#22C55E"></span> Imam Zaid Shakir</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-ingrid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#F97316"></span> Dr. Ingrid Mattson</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-hamza" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#3B82F6"></span> Shaykh Hamza Yusuf</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-tariq" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#C89B3C"></span> Dr. Tariq Ramadan</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-suhaib" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#EF4444"></span> Imam Suhaib Webb</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-zainab" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#8B5CF6"></span> Dr. Zainab Alwani</div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-all" checked onclick="toggleAllSpeakers(this)"><span class="dot" style="background:#1B3A3A"></span><span>All Speakers</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-yasir" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#4338CA"></span><span>Dr. Yasir Qadhi</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-omar" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#2A5F5F"></span><span>Omar Suleiman</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-zaid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#22C55E"></span><span>Imam Zaid Shakir</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-ingrid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#F97316"></span><span>Dr. Ingrid Mattson</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-hamza" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#3B82F6"></span><span>Shaykh Hamza Yusuf</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-tariq" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#C89B3C"></span><span>Dr. Tariq Ramadan</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-suhaib" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#EF4444"></span><span>Imam Suhaib Webb</span></div>
+            <div class="chk-row"><input type="checkbox" id="chk-spk-zainab" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#8B5CF6"></span><span>Dr. Zainab Alwani</span></div>
             <hr class="sec-divider">
             <div class="section-label">Filter by Month</div>
             <div style="display:flex;gap:8px;align-items:center" id="org-cal-period">
@@ -1964,10 +2024,11 @@
       </div>
       <div class="content-area">
         <div class="summary-strip">
-          <div class="summary-pill gold" onclick="filterRows('inv-table','pending')">Pending 4</div>
-          <div class="summary-pill green" onclick="filterRows('inv-table','accepted')">Accepted 5</div>
-          <div class="summary-pill red" onclick="filterRows('inv-table','declined')">Declined 1</div>
-          <div class="summary-pill gray" onclick="filterRows('inv-table','cancelled')">Cancelled 1</div>
+          <div class="summary-pill all active" data-status="all" onclick="setInvFilter(this, 'inv-table', 'all')">All 11</div>
+          <div class="summary-pill gold" data-status="pending" onclick="setInvFilter(this, 'inv-table', 'pending')">Pending 4</div>
+          <div class="summary-pill green" data-status="accepted" onclick="setInvFilter(this, 'inv-table', 'accepted')">Accepted 5</div>
+          <div class="summary-pill red" data-status="declined" onclick="setInvFilter(this, 'inv-table', 'declined')">Declined 1</div>
+          <div class="summary-pill gray" data-status="cancelled" onclick="setInvFilter(this, 'inv-table', 'cancelled')">Cancelled 1</div>
         </div>
         <div class="table-wrap">
           <table>
@@ -2931,10 +2992,7 @@
       document.getElementById(id).classList.add('active');
       currentScreen = id;
       window.scrollTo(0, 0);
-      // close all dropdowns
       document.querySelectorAll('.notif-dropdown').forEach(d => d.classList.remove('open'));
-      
-      // Render calendar when entering dashboard screen
       if (id === 'screen-org-1') {
         renderOrgCalendar();
       } else if (id === 'screen-spk-6') {
@@ -2999,15 +3057,12 @@
       showToast('All notifications marked read');
     }
 
-    // ===== NOTIFICATION DROPDOWN =====
     function toggleNotifDropdown(dropId, wrapId) {
       const drop = document.getElementById(dropId);
       const isOpen = drop.classList.contains('open');
-      // close all
       document.querySelectorAll('.notif-dropdown').forEach(d => d.classList.remove('open'));
       if (!isOpen) drop.classList.add('open');
     }
-    // close dropdown on outside click
     document.addEventListener('click', function (e) {
       document.querySelectorAll('.notif-bell-wrap').forEach(wrap => {
         if (!wrap.contains(e.target)) {
@@ -3028,7 +3083,6 @@
       showToast('All notifications marked as read');
     }
 
-    // ===== CHAT =====
     const CHAT_THREADS = {
       org: {
         SC: [
@@ -3095,10 +3149,8 @@
 
     function openChatThread(role, key, name, initials, preview, time) {
       activeChatWho[role] = key;
-      // update header
       document.getElementById(role + '-thread-av').textContent = initials;
       document.getElementById(role + '-thread-name').textContent = name;
-      // render messages
       const msgs = CHAT_THREADS[role][key] || [];
       const container = document.getElementById(role + '-thread-msgs');
       container.innerHTML = msgs.map(m => `
@@ -3108,7 +3160,6 @@
     </div>
   `).join('');
       container.scrollTop = container.scrollHeight;
-      // show detail pane, hide list
       document.getElementById(role + '-chat-list').style.display = 'none';
       const detail = document.getElementById(role + '-chat-detail');
       detail.classList.add('open');
@@ -3138,7 +3189,6 @@
       input.value = '';
     }
 
-    // ===== Calendar View Logic and State =====
     let orgCurrentDate = new Date(2026, 5, 10);
     let spkCurrentDate = new Date(2026, 5, 10);
     let orgCalendarView = 'month';
@@ -3171,17 +3221,12 @@
       const speakerIds = ['yasir', 'omar', 'zaid', 'ingrid', 'hamza', 'tariq', 'suhaib', 'zainab'];
       speakerIds.forEach(id => {
         const chk = document.getElementById('chk-spk-' + id);
-        if (chk && chk.checked) {
-          activeSpeakers.push(id);
-        }
+        if (chk && chk.checked) activeSpeakers.push(id);
       });
-
       const filtered = {};
       ORG_CAL_EVENTS_DATA.forEach(ev => {
         if (activeSpeakers.includes(ev.speaker)) {
-          if (!filtered[ev.date]) {
-            filtered[ev.date] = [];
-          }
+          if (!filtered[ev.date]) filtered[ev.date] = [];
           filtered[ev.date].push(ev);
         }
       });
@@ -3204,15 +3249,24 @@
         return c ? c.checked : true;
       });
       const allChk = document.getElementById('chk-spk-all');
-      if (allChk) {
-        allChk.checked = allChecked;
-      }
+      if (allChk) allChk.checked = allChecked;
       renderOrgCalendar();
     }
 
     function openOrgInvitations(status) {
       showScreen('screen-org-4');
-      filterRows('inv-table', status);
+      setInvFilter(null, 'inv-table', status);
+    }
+
+    function setInvFilter(btn, tableId, status) {
+      document.querySelectorAll('#screen-org-4 .summary-pill').forEach(p => p.classList.remove('active'));
+      if (btn) {
+        btn.classList.add('active');
+      } else {
+        const pill = document.querySelector(`#screen-org-4 .summary-pill[data-status="${status}"]`);
+        if (pill) pill.classList.add('active');
+      }
+      filterRows(tableId, status);
     }
 
     function getDaysInMonth(year, month) {
@@ -3222,7 +3276,7 @@
     function getStartOfWeek(date) {
       const d = new Date(date);
       const day = d.getDay();
-      const diff = d.getDate() - day; // Starts on Sunday
+      const diff = d.getDate() - day;
       return new Date(d.setDate(diff));
     }
 
@@ -3232,73 +3286,57 @@
       const firstDay = new Date(year, month, 1);
       const startOffset = firstDay.getDay();
       const totalDays = getDaysInMonth(year, month);
-      
       let html = '<div class="cal-wrap"><div class="cal-head"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div><div class="cal-grid">';
-      
       for (let i = 0; i < startOffset; i++) {
         html += '<div class="cal-cell" style="background:#F9FAFB; opacity: 0.5;"></div>';
       }
-      
       const today = new Date();
       const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
-      
       for (let d = 1; d <= totalDays; d++) {
         const isToday = (isCurrentMonth && today.getDate() === d) || (year === 2026 && month === 5 && d === 10) ? ' today' : '';
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        
         let chips = '';
         const dayEvents = eventsMap[dateStr] || [];
         dayEvents.forEach(ev => {
           chips += `<div class="cal-chip" style="background:${ev.color}" onclick="event.stopPropagation();openModal('${ev.modal}')">${ev.label}</div>`;
         });
-        
         html += `<div class="cal-cell${isToday}" onclick="selectCalDay('${modalPrefix}', ${year}, ${month}, ${d})"><div class="d">${d}</div>${chips}</div>`;
       }
-      
       const totalCells = startOffset + totalDays;
       const rem = (7 - (totalCells % 7)) % 7;
       for (let i = 0; i < rem; i++) {
         html += '<div class="cal-cell" style="background:#F9FAFB; opacity: 0.5;"></div>';
       }
-      
       html += '</div></div>';
       return html;
     }
 
     function buildWeekHTML(currentDate, eventsMap) {
       const startOfWeek = getStartOfWeek(currentDate);
-      
       let html = '<div class="cal-wrap"><div class="cal-head">';
       const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      
       for (let i = 0; i < 7; i++) {
         const d = new Date(startOfWeek);
         d.setDate(startOfWeek.getDate() + i);
         html += `<div>${weekdays[i]} ${d.getDate()}</div>`;
       }
       html += '</div><div class="cal-grid-week">';
-      
       for (let i = 0; i < 7; i++) {
         const d = new Date(startOfWeek);
         d.setDate(startOfWeek.getDate() + i);
-        
         const year = d.getFullYear();
         const month = d.getMonth();
         const dateNum = d.getDate();
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dateNum).padStart(2, '0')}`;
-        
         const today = new Date();
         const isToday = (today.getFullYear() === year && today.getMonth() === month && today.getDate() === dateNum) || (year === 2026 && month === 5 && dateNum === 10) ? ' today' : '';
-        
         let chips = '';
         const dayEvents = eventsMap[dateStr] || [];
         dayEvents.forEach(ev => {
           chips += `<div class="cal-chip" style="background:${ev.color}; white-space: normal;" onclick="event.stopPropagation();openModal('${ev.modal}')">${ev.label}</div>`;
         });
-        
         html += `<div class="cal-cell${isToday}" style="min-height: 180px;"><div class="d" style="font-weight: 600;">${dateNum}</div>${chips}</div>`;
       }
-      
       html += '</div></div>';
       return html;
     }
@@ -3309,10 +3347,8 @@
       const dateNum = currentDate.getDate();
       const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dateNum).padStart(2, '0')}`;
       const dayEvents = eventsMap[dateStr] || [];
-      
       let html = '<div class="card" style="background: #fff; padding: 24px; border: 1px solid #2A5F5F; border-radius: 12px;">';
       html += `<div style="font-size: 15px; font-weight: 700; color: #1B3A3A; border-bottom: 2px solid #2A5F5F; padding-bottom: 8px; margin-bottom: 16px;">📅 Events for ${currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>`;
-      
       if (dayEvents.length === 0) {
         html += '<div style="text-align: center; padding: 40px; color: #6B7B7B; font-size: 14px;">No events scheduled for this day.</div>';
       } else {
@@ -3330,7 +3366,6 @@
         });
         html += '</div>';
       }
-      
       html += '</div>';
       return html;
     }
@@ -3338,17 +3373,14 @@
     function updatePeriodLabel(prefix, currentDate, view) {
       const label = document.getElementById(prefix + '-period-label');
       if (!label) return;
-      
       if (view === 'month') {
         label.textContent = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       } else if (view === 'week') {
         const start = getStartOfWeek(currentDate);
         const end = new Date(start);
         end.setDate(start.getDate() + 6);
-        
         let startText = start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         let endText = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        
         label.textContent = `${startText} – ${endText}`;
       } else if (view === 'day') {
         label.textContent = currentDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
@@ -3358,7 +3390,6 @@
     function renderOrgCalendar() {
       const container = document.getElementById('org-cal');
       if (!container) return;
-      
       const events = getFilteredOrgEvents();
       if (orgCalendarView === 'month') {
         container.innerHTML = buildMonthHTML(orgCurrentDate, events, 'org');
@@ -3373,7 +3404,6 @@
     function renderSpkCalendar() {
       const container = document.getElementById('spk-cal');
       if (!container) return;
-      
       if (spkCalendarView === 'month') {
         container.innerHTML = buildMonthHTML(spkCurrentDate, SPK_CAL_EVENTS, 'spk');
       } else if (spkCalendarView === 'week') {
@@ -3430,7 +3460,6 @@
       }
     }
 
-    // ===== My Events Collapsible Modal Logic =====
     const speakerEventHistory = [
       { name: "Tech Leadership Summit", date: "Oct 15, 2025", org: "Acme Corporation", location: "San Francisco, CA", honorarium: "$3,500", status: "Confirmed", type: "upcoming" },
       { name: "Innovation Forum", date: "Nov 5, 2025", org: "FutureCo", location: "Austin, TX", honorarium: "$4,200", status: "Confirmed", type: "upcoming" },
@@ -3444,7 +3473,6 @@
       const upcomingContainer = document.getElementById('my-events-upcoming-list');
       const pastContainer = document.getElementById('my-past-events-list');
       if (!upcomingContainer || !pastContainer) return;
-
       upcomingContainer.innerHTML = speakerEventHistory.filter(ev => ev.type === 'upcoming').map(ev => `
         <div class="card" style="background:#fff; border-left: 5px solid #22C55E; padding: 12px 16px; margin: 0;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -3460,7 +3488,6 @@
           </div>
         </div>
       `).join('');
-
       pastContainer.innerHTML = speakerEventHistory.filter(ev => ev.type === 'past').map(ev => `
         <div class="card" style="background:#fff; border-left: 5px solid #6B7B7B; padding: 12px 16px; margin: 0; opacity: 0.85;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -3505,32 +3532,26 @@
       { init: 'SW', name: 'Imam Suhaib Webb', title: 'Islamic Society of Boston', topics: ['Youth Outreach', 'Contemporary Issues'], rating: 4.7, events: 41, fee: '$600' },
       { init: 'ZA', name: 'Dr. Zainab Alwani', title: 'Howard University', topics: ['Islamic Law', 'Family Studies', 'Quranic Exegesis'], rating: 4.8, events: 26, fee: '$500' }
     ];
+
     function buildSpeakers() {
       const searchInput = document.getElementById('speaker-search');
       const topicSelect = document.getElementById('speaker-topic-select');
-      
       const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
       const topic = topicSelect ? topicSelect.value : 'All Topics';
-      
       const filtered = SPEAKERS.filter(s => {
         const nameMatch = s.name.toLowerCase().includes(query);
         const titleMatch = s.title.toLowerCase().includes(query);
         const topicMatch = s.topics.some(t => t.toLowerCase().includes(query));
         const matchesQuery = !query || nameMatch || titleMatch || topicMatch;
-        
         const matchesTopic = topic === 'All Topics' || s.topics.some(t => t.toLowerCase() === topic.toLowerCase());
-        
         return matchesQuery && matchesTopic;
       });
-
       const g = document.getElementById('speakers-grid');
       if (!g) return;
-
       if (filtered.length === 0) {
         g.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #6B7B7B; font-size: 14px;">No speakers found matching your search.</div>';
         return;
       }
-
       g.innerHTML = filtered.map((s) => {
         const idx = SPEAKERS.indexOf(s);
         return `
@@ -3548,6 +3569,7 @@
     </div>`;
       }).join('');
     }
+
     function viewSpeaker(i) {
       const s = SPEAKERS[i];
       if (!s) return;
