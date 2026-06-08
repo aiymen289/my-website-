@@ -667,7 +667,6 @@
       border-right: none;
     }
 
-
     /* Stat grid */
     .stat-grid {
       display: grid;
@@ -683,32 +682,87 @@
     }
 
     /* =============================================
-       FIXED: chk-row — left-aligned, tighter gap
+       SPEAKER FILTER CHECKBOXES — custom styled
        ============================================= */
     .chk-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: #1B3A3A;
-      justify-content: flex-start
-    }
-
-    /* FIXED: checkbox size increased to 22px */
-    input[type="checkbox"] {
-      width: 22px;
-      height: 22px;
-      margin: 0;
+      gap: 10px;
+      margin-bottom: 8px;
       cursor: pointer;
-      accent-color: #C89B3C;
-      flex-shrink: 0;
+      user-select: none;
     }
 
-    /* FIXED: dot size increased to 15px */
+    /* Hide native checkbox */
+    .chk-row input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Custom checkbox box */
+    .chk-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 2px solid #2A5F5F;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    /* Checkmark SVG inside — hidden by default */
+    .chk-box::after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 6px;
+      border-left: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      transform: rotate(-45deg) translateY(-1px);
+      transition: border-color 0.15s;
+    }
+
+    /* Checked state: teal border + teal tick, white bg */
+    .chk-row input[type="checkbox"]:checked + .chk-box {
+      border-color: #2A5F5F;
+      background: #fff;
+    }
+
+    .chk-row input[type="checkbox"]:checked + .chk-box::after {
+      border-color: #2A5F5F;
+    }
+
+    /* Hover state */
+    .chk-row:hover .chk-box {
+      border-color: #C89B3C;
+      background: rgba(200, 155, 60, 0.05);
+    }
+
+    .chk-row:hover input[type="checkbox"]:checked + .chk-box {
+      border-color: #C89B3C;
+    }
+
+    .chk-row:hover input[type="checkbox"]:checked + .chk-box::after {
+      border-color: #C89B3C;
+    }
+
+    .chk-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1B3A3A;
+      line-height: 1.3;
+    }
+
+    /* FIXED: dot size */
     .dot {
-      width: 15px;
-      height: 15px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       display: inline-block;
       flex-shrink: 0;
@@ -1648,7 +1702,9 @@
       <div class="page-header">
         <div>
           <h1>Dashboard</h1>
- <div class="subtitle"> Podiums</div>        </div>
+          <!-- FIX 1: Changed from "Acme Corporation" to "Podium" -->
+          <div class="subtitle">Podium</div>
+        </div>
         <div class="header-right">
           <span style="color:#EAF4F4;font-size:14px">Today: June 3, 2026</span>
           <button class="btn-secondary-light" onclick="showScreen('screen-org-3')">Manage Speakers</button>
@@ -1783,15 +1839,63 @@
         <div class="two-col">
           <div class="card" style="padding:20px">
             <div class="section-label">Filter by Speaker</div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-all" checked onclick="toggleAllSpeakers(this)"><span class="dot" style="background:#1B3A3A"></span><span>All Speakers</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-yasir" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#4338CA"></span><span>Dr. Yasir Qadhi</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-omar" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#2A5F5F"></span><span>Omar Suleiman</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-zaid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#22C55E"></span><span>Imam Zaid Shakir</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-ingrid" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#F97316"></span><span>Dr. Ingrid Mattson</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-hamza" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#3B82F6"></span><span>Shaykh Hamza Yusuf</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-tariq" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#C89B3C"></span><span>Dr. Tariq Ramadan</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-suhaib" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#EF4444"></span><span>Imam Suhaib Webb</span></div>
-            <div class="chk-row"><input type="checkbox" id="chk-spk-zainab" checked onclick="speakerCheckboxChanged()"><span class="dot" style="background:#8B5CF6"></span><span>Dr. Zainab Alwani</span></div>
+
+            <!-- FIX 2: Custom-styled checkboxes — labels are clickable, no gold fill, teal tick on white bg -->
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-all" checked onchange="toggleAllSpeakers(this)">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#1B3A3A"></span>
+              <span class="chk-label">All Speakers</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-yasir" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#4338CA"></span>
+              <span class="chk-label">Dr. Yasir Qadhi</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-omar" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#2A5F5F"></span>
+              <span class="chk-label">Omar Suleiman</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-zaid" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#22C55E"></span>
+              <span class="chk-label">Imam Zaid Shakir</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-ingrid" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#F97316"></span>
+              <span class="chk-label">Dr. Ingrid Mattson</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-hamza" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#3B82F6"></span>
+              <span class="chk-label">Shaykh Hamza Yusuf</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-tariq" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#C89B3C"></span>
+              <span class="chk-label">Dr. Tariq Ramadan</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-suhaib" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#EF4444"></span>
+              <span class="chk-label">Imam Suhaib Webb</span>
+            </label>
+            <label class="chk-row">
+              <input type="checkbox" id="chk-spk-zainab" checked onchange="speakerCheckboxChanged()">
+              <span class="chk-box"></span>
+              <span class="dot" style="background:#8B5CF6"></span>
+              <span class="chk-label">Dr. Zainab Alwani</span>
+            </label>
+
             <hr class="sec-divider">
             <div class="section-label">Filter by Month</div>
             <div style="display:flex;gap:8px;align-items:center" id="org-cal-period">
@@ -2175,7 +2279,7 @@
       <div class="content-area">
         <div class="card" style="padding:28px">
           <div class="section-label">Organization Profile</div>
-          <div class="form-row"><label>Organization Name</label><input value="Podiums"></div>
+          <div class="form-row"><label>Organization Name</label><input value="Acme Corporation"></div>
           <div class="form-row"><label>Contact Email</label><input value="admin@acme.com"></div>
           <div class="form-row"><label>Phone</label><input value="+1 415 555 0100"></div>
           <div class="form-row"><label>Website</label><input value="www.acme.com"></div>
@@ -2257,7 +2361,7 @@
                   <div class="notif-drop-icon inv">✉️</div>
                   <div class="notif-drop-content">
                     <div class="notif-drop-label">INVITATION</div>
-                    <div class="notif-drop-main">New invitation from Podiums</div>
+                    <div class="notif-drop-main">New invitation from Acme Corporation</div>
                     <div class="notif-drop-sub">Tech Leadership Summit · Oct 15, 2025</div>
                     <div class="notif-drop-time">2 hours ago</div>
                   </div>
@@ -2329,7 +2433,7 @@
               onclick="openModal('modal-spk-event-confirmed')">
               <div style="font-size:14px;font-weight:600">Tech Leadership Summit</div>
               <div style="font-size:12px;color:#6B7B7B">Oct 15</div>
-              <div style="font-size:12px;color:#C89B3C"> Podiums</div>
+              <div style="font-size:12px;color:#C89B3C">Acme Corporation</div>
             </div>
             <div style="padding:12px 16px;border-bottom:1px solid #EAF4F4;cursor:pointer"
               onclick="openModal('modal-spk-event-confirmed')">
@@ -2363,11 +2467,11 @@
       <div class="chat-panes">
         <div class="chat-list-pane" id="spk-chat-list">
           <div class="chat-contact"
-            onclick="openChatThread('spk','AC',' Podiums','AC','Please confirm your travel arrangements.','1h ago')">
+            onclick="openChatThread('spk','AC','Acme Corporation','AC','Please confirm your travel arrangements.','1h ago')">
             <div class="chat-contact-avatar" style="background:#2A5F5F">AC<div class="chat-online"></div>
             </div>
             <div class="chat-contact-info">
-              <div class="chat-contact-name"> Podiums</div>
+              <div class="chat-contact-name">Acme Corporation</div>
               <div class="chat-contact-preview">Please confirm your travel arrangements.</div>
             </div>
             <span class="chat-contact-unread">1</span>
@@ -2403,7 +2507,7 @@
           <div class="chat-thread-head">
             <button class="chat-back-btn" onclick="closeChatThread('spk')">←</button>
             <div class="chat-thread-av" id="spk-thread-av">AC</div>
-            <div class="chat-thread-name" id="spk-thread-name">Podiums</div>
+            <div class="chat-thread-name" id="spk-thread-name">Acme Corporation</div>
           </div>
           <div class="chat-messages" id="spk-thread-msgs"></div>
           <div class="chat-input-row">
@@ -2450,7 +2554,7 @@
           <div class="inv-card" data-status="pending">
             <div class="inv-banner" style="background:#C89B3C">3 days left</div>
             <div class="inv-body">
-              <div style="font-size:15px;font-weight:600">Podiums</div>
+              <div style="font-size:15px;font-weight:600">Acme Corporation</div>
               <div style="font-size:14px;color:#6B7B7B">Tech Leadership Summit</div>
               <div style="font-size:13px;color:#6B7B7B;margin-top:8px">📅 Oct 15, 2025 📍 San Francisco</div>
               <div style="font-size:18px;font-weight:700;color:#C89B3C;margin-top:12px">$3,500</div>
@@ -2601,7 +2705,7 @@
           <div class="notif-row unread" onclick="openModal('modal-notification-detail')">
             <div class="notif-icon" style="background:rgba(200,155,60,0.15);color:#C89B3C">🔔</div>
             <div class="notif-center">
-              <div class="notif-title">New invitation from Podiums</div>
+              <div class="notif-title">New invitation from Acme Corporation</div>
               <div class="notif-sub">Tech Leadership Summit · Oct 15, 2025</div>
             </div>
             <div class="notif-time">2 hours ago</div>
@@ -2851,7 +2955,7 @@
           onclick="closeModal()">×</button></div>
       <div class="modal-body">
         <div class="row"><span class="lbl">Date</span><span>October 15, 2025</span></div>
-        <div class="row"><span class="lbl">Organization</span><span>Podiums</span></div>
+        <div class="row"><span class="lbl">Organization</span><span>Acme Corporation</span></div>
         <div class="row"><span class="lbl">Location</span><span>San Francisco, CA</span></div>
         <div class="row"><span class="lbl">Honorarium</span><span
             style="font-size:18px;font-weight:700;color:#C89B3C">$3,500</span></div>
@@ -2895,7 +2999,7 @@
     <div class="modal-card">
       <div class="modal-header"><span>Accept Invitation</span><button class="modal-close"
           onclick="closeModal()">×</button></div>
-      <div class="modal-body">Accepting invitation from <b>podiums</b> for <b>Tech Leadership Summit</b> on
+      <div class="modal-body">Accepting invitation from <b>Acme Corporation</b> for <b>Tech Leadership Summit</b> on
         October 15, 2025. Honorarium: <span style="color:#C89B3C;font-weight:700">$3,500</span>.</div>
       <div class="modal-footer"><button class="btn-secondary" onclick="closeModal()">Go Back</button><button
           class="btn-success" onclick="closeModal();showToast('Invitation accepted!')">Confirm Accept</button></div>
